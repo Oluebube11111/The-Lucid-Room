@@ -145,8 +145,7 @@
         .featured-main {
             position: relative;
             height: 450px;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.95) 100%), url('Lizzio_news.png.jpg')
- center/cover;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.95) 100%), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200&auto=format&fit=crop') center/cover;
             border-radius: 8px;
             display: flex;
             flex-direction: column;
@@ -190,16 +189,8 @@
             color: #eff0f6;
         }
 
-        .article-body-text blockquote {
-            border-left: 4px solid var(--accent-color);
-            padding-left: 15px;
-            font-style: italic;
-            margin: 20px 0;
-            color: #ffffff;
-            font-size: 18px;
-            background: #1f1f24;
-            padding: 15px;
-            border-radius: 4px;
+        .article-body-text p {
+            margin-bottom: 15px;
         }
 
         .video-section {
@@ -237,6 +228,9 @@
             border-radius: 6px;
             overflow: hidden;
             border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: white;
+            display: block;
         }
 
         .card-img {
@@ -420,27 +414,26 @@
     </div>
 
     <div class="ticker-wrap">
-        <span class="ticker-title">Trending</span>
-        <span class="ticker-text">🔥 Lizzo addresses weight comments: "Everyone can ask me about weight gain, too..."</span>
+        <span class="ticker-title">Breaking</span>
+        <span class="ticker-text">⚖️ Darez Diggs $10M lawsuit settled and dismissed; Stefon Diggs case remains active...</span>
     </div>
 
     <main>
         <div class="left-content">
             <div class="hero-grid">
                 <div class="featured-main">
-                    <span class="badge">Trending Now</span>
-                    <h2>Lizzo Speaks Out on Public Commentary & Unrealistic Beauty Standards</h2>
+                    <span class="badge">Legal Update</span>
+                    <h2>Darez Diggs Settles $10 Million Civil Lawsuit Following Elevator Altercation</h2>
                     <span class="meta">Just now · By Editorial Team</span>
                 </div>
             </div>
 
             <div class="article-body-text">
-                <p>In a recent interview, Lizzo candidly addressed the ongoing public focus regarding her body, stating:</p>
-                <blockquote>
-                    “I’ve gained 20 pounds since last year, so everyone can ask me about weight gain, too, if they’d like.”
-                </blockquote>
-                <p>She went on to criticize what she described as a broader culture that constantly judges women’s bodies, arguing that the pressure to meet unrealistic beauty standards affects how women are viewed and treated globally.</p>
-                <p style="margin-top: 15px; font-weight: bold; color: var(--accent-color);">Roomies 👀 should a celebrity’s body be a topic of public discussion, or should the focus stay on their talent and achievements? 🤔</p>
+                <p>According to court records, Christopher Griffith has dismissed his $10 million civil lawsuit against Darez Diggs and a Los Angeles apartment complex after reaching a settlement. The terms of the agreement have not been made public.</p>
+                <p>The lawsuit stemmed from a 2023 elevator altercation in Los Angeles, in which Griffith alleged he was assaulted and that his phone was taken. Darez Diggs previously pleaded no contest to a felony assault charge related to that incident.</p>
+                <p>While that case has now been resolved, the separate federal lawsuit filed by Griffith against Stefon Diggs remains active. Griffith alleges Diggs sexually assaulted him in 2023, claims that Diggs has consistently denied. Diggs has also filed a defamation countersuit, and the matter is still pending in court.</p>
+                <p style="margin-top: 20px; font-weight: bold; color: var(--accent-color);">Roomies 👀 one legal battle may be over, but the larger case is still unfolding. As always, the allegations against Stefon Diggs remain unresolved and will be decided through the legal process.</p>
+                <p style="font-weight: bold; color: #ffffff;">What are your thoughts on this latest development? 👇</p>
             </div>
 
             <div class="video-section">
@@ -452,21 +445,22 @@
 
             <h3 class="section-title">The Latest Buzz</h3>
             <div class="news-grid">
+                <!-- Lizzo Moved Down Here Successfully -->
+                <div class="news-card">
+                    <div class="card-img" style="background-image: url('Lizzio_news.png.jpg');"></div>
+                    <div class="card-content">
+                        <span class="badge">Trending Now</span>
+                        <h4>Lizzo Speaks Out on Public Commentary & Unrealistic Beauty Standards</h4>
+                        <span class="meta">1 hour ago</span>
+                    </div>
+                </div>
+
                 <div class="news-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=400&auto=format&fit=crop');"></div>
                     <div class="card-content">
                         <span class="badge">Sports</span>
                         <h4>Game Day Recaps: Key Predictions Shaking Up the Rankings</h4>
                         <span class="meta">2 hours ago</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=400&auto=format&fit=crop');"></div>
-                    <div class="card-content">
-                        <span class="badge">Lifestyle</span>
-                        <h4>Street Fashion Evolution: Curating The Modern Cultural Aesthetic</h4>
-                        <span class="meta">4 hours ago</span>
                     </div>
                 </div>
             </div>
@@ -480,10 +474,6 @@
                     <div class="single-comment">
                         <div class="comment-user">Roomie_99 <span>Verified Guest</span></div>
                         <div class="comment-text">The Lucid Room is keeping us fed with the news! Loving this clean layout design. 🔥</div>
-                    </div>
-                    <div class="single-comment">
-                        <div class="comment-user">SportsFanatic <span>Top Fan</span></div>
-                        <div class="comment-text">Need that full sports clip breakdown drop ASAP tonight! Don't miss it.</div>
                     </div>
                 </div>
             </div>
@@ -500,8 +490,8 @@
 
             <div class="sidebar-panel">
                 <h3 class="sidebar-title">Hot Topics</h3>
-                <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">💬 <strong>12.4k users</strong> talking about the upcoming mid-season tournament drops.</p>
-                <p style="font-size:13px; color:var(--text-muted);">🎬 <strong>8.9k users</strong> tracking red carpet exclusive leaks.</p>
+                <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">💬 <strong>14.2k users</strong> tracking the Diggs lawsuit updates live.</p>
+                <p style="font-size:13px; color:var(--text-muted);">🎬 <strong>12.4k users</strong> talking about the Lizzo interview inside the room.</p>
             </div>
         </aside>
     </main>
