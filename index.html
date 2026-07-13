@@ -139,13 +139,13 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .featured-main {
             position: relative;
             height: 450px;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.95) 100%), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop') center/cover;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.95) 100%), url('lizzo_news.png') center/cover;
             border-radius: 8px;
             display: flex;
             flex-direction: column;
@@ -171,11 +171,34 @@
             font-weight: 800;
             margin-bottom: 10px;
             line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .meta {
             font-size: 12px;
             color: var(--text-muted);
+        }
+
+        .article-body-text {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+            font-size: 16px;
+            color: #eff0f6;
+        }
+
+        .article-body-text blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            font-style: italic;
+            margin: 20px 0;
+            color: #ffffff;
+            font-size: 18px;
+            background: #1f1f24;
+            padding: 15px;
+            border-radius: 4px;
         }
 
         .video-section {
@@ -397,7 +420,7 @@
 
     <div class="ticker-wrap">
         <span class="ticker-title">Trending</span>
-        <span class="ticker-text">🔥 Exclusive scoop dropping tonight... Stay locked into the Room!</span>
+        <span class="ticker-text">🔥 Lizzo addresses weight comments: "Everyone can ask me about weight gain, too..."</span>
     </div>
 
     <main>
@@ -405,9 +428,18 @@
             <div class="hero-grid">
                 <div class="featured-main">
                     <span class="badge">Trending Now</span>
-                    <h2>The Highlights: Unveiling Culture Shifts & Red Carpet Statements This Week</h2>
-                    <span class="meta">10 minutes ago · By Editorial Team</span>
+                    <h2>Lizzo Speaks Out on Public Commentary & Unrealistic Beauty Standards</h2>
+                    <span class="meta">Just now · By Editorial Team</span>
                 </div>
+            </div>
+
+            <div class="article-body-text">
+                <p>In a recent interview, Lizzo candidly addressed the ongoing public focus regarding her body, stating:</p>
+                <blockquote>
+                    “I’ve gained 20 pounds since last year, so everyone can ask me about weight gain, too, if they’d like.”
+                </blockquote>
+                <p>She went on to criticize what she described as a broader culture that constantly judges women’s bodies, arguing that the pressure to meet unrealistic beauty standards affects how women are viewed and treated globally.</p>
+                <p style="margin-top: 15px; font-weight: bold; color: var(--accent-color);">Roomies 👀 should a celebrity’s body be a topic of public discussion, or should the focus stay on their talent and achievements? 🤔</p>
             </div>
 
             <div class="video-section">
