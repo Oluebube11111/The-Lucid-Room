@@ -503,42 +503,66 @@
         <p>&copy; 2026 The Lucid Room. All Rights Reserved. Entertainment, News, Culture & Lifestyle.</p>
     </footer>
 
- <script>
+<script>
   async function loadLatestPosts() {
     try {
-      // 1. Fetch file list from GitHub posts directory
       const res = await fetch('https://api.github.com/repos/Oluebube11111/The-Lucid-Room/contents/posts');
       if (!res.ok) return;
       const files = await res.json();
       if (!Array.isArray(files) || files.length === 0) return;
 
-      // 2. Get the latest post file
-      const latest = files[files.length - 1];
-      const postRes = await fetch(latest.download_url);
-      const text = await postRes.text();
+      // Get all post elements on your page
+      const postElements = document.querySelectorAll('.hero-grid, .post-card, article');
 
-      // 3. Extract title, category, and image using regex
-      const titleMatch = text.match(/title:\s*["']?(.*?)["']?$/m);
-      const badgeMatch = text.match(/badge:\s*["']?(.*?)["']?$/m);
-      const imageMatch = text.match(/image:\s*["']?(.*?)["']?$/m);
+      // Sort files to get newest first
+      const sortedFiles = files.reverse();
 
-      // 4. Update the front page elements dynamically
-      if (titleMatch && titleMatch[1]) {
-        const headline = document.querySelector('.hero-grid h2') || document.querySelector('h2');
-        if (headline) headline.textContent = titleMatch[1].trim();
-      }
+      sortedFiles.forEach(async (file, index) => {
+        if (!postElements[index]) return;
 
-      if (badgeMatch && badgeMatch[1]) {
-        const badge = document.querySelector('.hero-grid .badge') || document.querySelector('.badge');
-        if (badge) badge.textContent = badgeMatch[1].trim();
-      }
+        const postRes = await fetch(file.download_url);
+        const text = await postRes.text();
 
-      if (imageMatch && imageMatch[1]) {
-        const img = document.querySelector('.hero-grid img');
-        if (img) img.src = imageMatch[1].trim();
-      }
+        // Extract metadata
+        const titleMatch = text.match(/title:\s*["']?(.*?)["']?$/m);
+        const badgeMatch = text.match(/badge:\s*["']?(.*?)["']?$/m);
+        const imageMatch = text.match(/image:\s*["']?(.*?)["']?$/m);
+        const bodyText = text.replace(/---[\s\S]*?---/, '').trim();
+
+        const postSlug = file.name.replace(/\.md$/, '');
+        const articleUrl = `article.html?post=${postSlug}`;
+
+        const card = postElements[index];
+
+        // Update content
+        if (titleMatch && titleMatch[1]) {
+          const titleEl = card.querySelector('h2, h3, .title');
+          if (titleEl) titleEl.textContent = titleMatch[1].trim();
+        }
+
+        if (badgeMatch && badgeMatch[1]) {
+          const badgeEl = card.querySelector('.badge');
+          if (badgeEl) badgeEl.textContent = badgeMatch[1].trim();
+        }
+
+        if (imageMatch && imageMatch[1]) {
+          const imgEl = card.querySelector('img');
+          if (imgEl) imgEl.src = imageMatch[1].trim();
+        }
+
+        if (bodyText) {
+          const snippetEl = card.querySelector('p');
+          if (snippetEl) snippetEl.textContent = bodyText.substring(0, 140) + '...';
+        }
+
+        // Make the entire post card clickable
+        card.style.cursor = 'pointer';
+        card.onclick = () => {
+          window.location.href = articleUrl;
+        };
+      });
     } catch (err) {
-      console.error('Failed to load dynamic post:', err);
+      console.error('Error setting up post links:', err);
     }
   }
 
