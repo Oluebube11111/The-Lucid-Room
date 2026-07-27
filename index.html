@@ -502,7 +502,8 @@
     <footer>
         <p>&copy; 2026 The Lucid Room. All Rights Reserved. Entertainment, News, Culture & Lifestyle.</p>
     </footer>
-<script>
+
+  <script>
   async function loadLatestPosts() {
     try {
       const response = await fetch('https://api.github.com/repos/Oluebube11111/The-Lucid-Room/contents/posts');
@@ -518,13 +519,13 @@
       const categoryMatch = postText.match(/badge:\s*"(.*?)"/) || postText.match(/badge:\s*(.*)/);
       
       if (titleMatch) {
-        const titleElement = document.querySelector('.main-article-title') || document.querySelector('h1');
-        if (titleElement) titleElement.textContent = titleMatch[1].replace(/"/g, '');
+        const headline = document.querySelector('.hero-grid h2') || document.querySelector('h2');
+        if (headline) headline.textContent = titleMatch[1].replace(/"/g, '');
       }
       
       if (categoryMatch) {
-        const categoryElement = document.querySelector('.main-article-badge') || document.querySelector('.badge');
-        if (categoryElement) categoryElement.textContent = categoryMatch[1].replace(/"/g, '');
+        const badge = document.querySelector('.hero-grid .badge') || document.querySelector('.badge');
+        if (badge) badge.textContent = categoryMatch[1].replace(/"/g, '');
       }
     } catch (err) {
       console.log('Error loading dynamic post:', err);
