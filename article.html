@@ -6,9 +6,10 @@
   <title>Article - The Lucid Room</title>
   <style>
     body { font-family: sans-serif; background: #0d0d0d; color: #fff; padding: 20px; max-width: 800px; margin: 0 auto; }
-    a { color: #ff0055; text-decoration: none; }
-    img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }
-    h1 { font-size: 28px; }
+    a { color: #ff0055; text-decoration: none; font-weight: bold; }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; display: block; }
+    h1 { font-size: 28px; line-height: 1.3; }
+    p { line-height: 1.6; color: #ccc; }
   </style>
 </head>
 <body>
@@ -33,14 +34,22 @@
         const bodyContent = text.replace(/---[\s\S]*?---/, '').trim();
 
         if (titleMatch) document.getElementById('post-title').textContent = titleMatch[1];
-        if (imageMatch) {
+        
+        if (imageMatch && imageMatch[1]) {
+          let imgPath = imageMatch[1].trim();
+          // Remove leading slash if present
+          if (imgPath.startsWith('/')) imgPath = imgPath.substring(1);
+          
           const img = document.getElementById('post-image');
-          img.src = imageMatch[1];
+          img.src = imgPath;
           img.style.display = 'block';
         }
-        document.getElementById('post-content').innerText = bodyContent;
+
+        // Format paragraphs nicely
+        const formattedBody = bodyContent.split('\n\n').map(p => `<p>${p}</p>`).join('');
+        document.getElementById('post-content').innerHTML = formattedBody;
       } catch (err) {
-        console.error('Error:', err);
+        console.error('Error loading article:', err);
       }
     }
     document.addEventListener('DOMContentLoaded', loadArticle);
