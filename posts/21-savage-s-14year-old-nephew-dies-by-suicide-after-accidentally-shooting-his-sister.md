@@ -4,7 +4,7 @@ badge: Hip Hop News
 image: /uploads/IMG_4762.jpeg
 ---
 
-A tragic loss for 21 Savage and his family. His 14-year-old nephew Seven Shirley d!ed by su!c!de after acc!dentally shòoting his 12-year-old sister, who is recovering after multiple surgeries 💔🚨
+A tragic loss for 21 Savage and his family. His 14-year-old nephew Seven Shirley d!ed by su!c!de after acc!dentally shòoting his 12-year-old sister, who is recovering after multiple surgeries 
 
 Family members revealed that Seven bought a gùn off the street for $200 following the recent shoòting of his best friend. On July 22, the firearm accidentally went off, striking his sister, Lyric, in the neck. Believing he faced severe consequences and public backlash, Seven tragically d!ed by suicide shortly after.
 
