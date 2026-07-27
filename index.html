@@ -546,9 +546,12 @@
         }
 
         if (imageMatch && imageMatch[1]) {
-          const imgEl = card.querySelector('img');
-          if (imgEl) imgEl.src = imageMatch[1].trim();
-        }
+    let imgPath = imageMatch[1].trim();
+    if (imgPath.startsWith('/')) imgPath = imgPath.substring(1);
+    const imgEl = card.querySelector('img');
+    if (imgEl) imgEl.src = imgPath;
+}
+
 
         if (bodyText) {
           const snippetEl = card.querySelector('p');
