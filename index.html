@@ -503,37 +503,48 @@
         <p>&copy; 2026 The Lucid Room. All Rights Reserved. Entertainment, News, Culture & Lifestyle.</p>
     </footer>
 
-  <script>
+ <script>
   async function loadLatestPosts() {
     try {
-      const response = await fetch('https://api.github.com/repos/Oluebube11111/The-Lucid-Room/contents/posts');
-      const files = await response.json();
-      
+      // 1. Fetch file list from GitHub posts directory
+      const res = await fetch('https://api.github.com/repos/Oluebube11111/The-Lucid-Room/contents/posts');
+      if (!res.ok) return;
+      const files = await res.json();
       if (!Array.isArray(files) || files.length === 0) return;
 
-      const latestFile = files[files.length - 1];
-      const postResponse = await fetch(latestFile.download_url);
-      const postText = await postResponse.text();
+      // 2. Get the latest post file
+      const latest = files[files.length - 1];
+      const postRes = await fetch(latest.download_url);
+      const text = await postRes.text();
 
-      const titleMatch = postText.match(/title:\s*"(.*?)"/) || postText.match(/title:\s*(.*)/);
-      const categoryMatch = postText.match(/badge:\s*"(.*?)"/) || postText.match(/badge:\s*(.*)/);
-      
-      if (titleMatch) {
+      // 3. Extract title, category, and image using regex
+      const titleMatch = text.match(/title:\s*["']?(.*?)["']?$/m);
+      const badgeMatch = text.match(/badge:\s*["']?(.*?)["']?$/m);
+      const imageMatch = text.match(/image:\s*["']?(.*?)["']?$/m);
+
+      // 4. Update the front page elements dynamically
+      if (titleMatch && titleMatch[1]) {
         const headline = document.querySelector('.hero-grid h2') || document.querySelector('h2');
-        if (headline) headline.textContent = titleMatch[1].replace(/"/g, '');
+        if (headline) headline.textContent = titleMatch[1].trim();
       }
-      
-      if (categoryMatch) {
+
+      if (badgeMatch && badgeMatch[1]) {
         const badge = document.querySelector('.hero-grid .badge') || document.querySelector('.badge');
-        if (badge) badge.textContent = categoryMatch[1].replace(/"/g, '');
+        if (badge) badge.textContent = badgeMatch[1].trim();
+      }
+
+      if (imageMatch && imageMatch[1]) {
+        const img = document.querySelector('.hero-grid img');
+        if (img) img.src = imageMatch[1].trim();
       }
     } catch (err) {
-      console.log('Error loading dynamic post:', err);
+      console.error('Failed to load dynamic post:', err);
     }
   }
 
-  window.addEventListener('DOMContentLoaded', loadLatestPosts);
+  document.addEventListener('DOMContentLoaded', loadLatestPosts);
 </script>
+
 
 </body>
 </html>
