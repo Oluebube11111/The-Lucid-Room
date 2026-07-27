@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article - The Lucid Room</title>
+  <style>
+    body { font-family: sans-serif; background: #0d0d0d; color: #fff; padding: 20px; max-width: 800px; margin: 0 auto; }
+    a { color: #ff0055; text-decoration: none; }
+    img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }
+    h1 { font-size: 28px; }
+  </style>
+</head>
+<body>
+  <a href="index.html">&larr; Back to Home</a>
+  <h1 id="post-title">Loading...</h1>
+  <img id="post-image" src="" alt="" style="display:none;" />
+  <div id="post-content"></div>
+
+  <script>
+    async function loadArticle() {
+      const params = new URLSearchParams(window.location.search);
+      const postSlug = params.get('post');
+      if (!postSlug) return;
+
+      try {
+        const res = await fetch(`https://raw.githubusercontent.com/Oluebube11111/The-Lucid-Room/main/posts/${postSlug}.md`);
+        if (!res.ok) return;
+        const text = await res.text();
+
+        const titleMatch = text.match(/title:\s*["']?(.*?)["']?$/m);
+        const imageMatch = text.match(/image:\s*["']?(.*?)["']?$/m);
+        const bodyContent = text.replace(/---[\s\S]*?---/, '').trim();
+
+        if (titleMatch) document.getElementById('post-title').textContent = titleMatch[1];
+        if (imageMatch) {
+          const img = document.getElementById('post-image');
+          img.src = imageMatch[1];
+          img.style.display = 'block';
+        }
+        document.getElementById('post-content').innerText = bodyContent;
+      } catch (err) {
+        console.error('Error:', err);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', loadArticle);
+  </script>
+</body>
+</html>
