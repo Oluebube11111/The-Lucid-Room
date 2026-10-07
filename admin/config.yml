@@ -4,7 +4,7 @@ backend:
   branch: main
 
 media_folder: "uploads"
-public_folder: "/uploads"
+public_folder: "uploads"
 
 collections:
   - name: "posts"
@@ -13,7 +13,15 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Badge", name: "badge", widget: "string" }
-      - { label: "Featured Image", name: "image", widget: "image" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Badge"
+        name: "badge"
+        widget: "string"
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
